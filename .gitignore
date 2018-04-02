@@ -1,3 +1,7 @@
 
+# rust binaries
 /target
 **/*.rs.bk
+
+# vim temps
+**/*.swp
