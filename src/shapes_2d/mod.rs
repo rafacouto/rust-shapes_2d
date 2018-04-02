@@ -1,9 +1,11 @@
 
+pub mod area;
+
 ///////////////////////////////////////////////////////////////////
 
 #[derive(Debug)]
 pub struct Circle {
-    radius: f64,
+    pub radius: f64,
 }
 
 impl Circle {
@@ -19,7 +21,7 @@ impl Circle {
 
 #[derive(Debug)]
 pub struct Square {
-    side: f64,
+    pub side: f64,
 }
 
 impl Square {
@@ -34,8 +36,8 @@ impl Square {
 
 #[derive(Debug)]
 pub struct Rectangle {
-    side1: f64,
-    side2: f64,
+    pub side1: f64,
+    pub side2: f64,
 }
 
 impl Rectangle {
@@ -51,8 +53,8 @@ impl Rectangle {
 
 #[derive(Debug)]
 pub struct RegularPolygon {
-    sides: u16,
-    radius: f64,
+    pub sides: u16,
+    pub radius: f64,
 }
 
 impl RegularPolygon {
