@@ -1,6 +1,8 @@
 
 pub mod area;
 
+use std::f64::consts::PI;
+
 ///////////////////////////////////////////////////////////////////
 
 #[derive(Debug)]
@@ -53,16 +55,35 @@ impl Rectangle {
 
 #[derive(Debug)]
 pub struct RegularPolygon {
-    pub sides: u16,
+    pub edges: u16,
     pub radius: f64,
 }
 
+
 impl RegularPolygon {
-    pub fn new(sides: u16, radius: f64) -> RegularPolygon {
+    pub fn new(edges: u16, radius: f64) -> RegularPolygon {
         RegularPolygon {
-            sides,
+            edges,
             radius,
         }
+    }
+
+    pub fn apothem(&self) -> f64 {
+        self.radius * (PI / self.edges as f64).cos()
+    }
+
+    pub fn side(&self) -> f64 {
+        self.radius * 2.0 * (PI / self.edges as f64).sin()
+    }
+
+    pub fn from_edge(edges: u16, length: f64) -> RegularPolygon {
+        let r = length / (2.0 * (PI / edges as f64).sin());
+        RegularPolygon::new(edges, r)
+    }
+
+    pub fn from_apothem(edges: u16, length: f64) -> RegularPolygon {
+        let r = length / (PI / edges as f64).cos();
+        RegularPolygon::new(edges, r)
     }
 }
 

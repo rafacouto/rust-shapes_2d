@@ -7,7 +7,7 @@ pub trait Area2d {
 
 ////////////////////////////////////////////////////////////////
 
-const PI: f64 = 3.14159265;
+use std::f64::consts::PI;
 
 ////////////////////////////////////////////////////////////////
 
@@ -30,6 +30,14 @@ impl Area2d for Square {
 impl Area2d for Rectangle {
     fn area(&self) -> f64 {
        self.side1 * self.side2
+    }
+}
+
+
+impl Area2d for RegularPolygon {
+    fn area(&self) -> f64 {
+        let s = 2.0 * PI / self.edges as f64;
+        0.5 * self.edges as f64 * self.radius * self.radius * s.sin()
     }
 }
 
